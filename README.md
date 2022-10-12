@@ -30,3 +30,26 @@
 
 - .gitignore
     - https://github.com/jpadilla/django-project-template/blob/master/.gitignore
+
+## User
+- templates/user/register.html
+- view.py
+    - 新增user_register方法
+         - return render(request,'./user/register.html')
+- 新增urls.py
+    - path('register/', views.user_register),
+
+## todolist
+    - urls.py ==> user/urls.py
+        - path('user/', include('user.urls'))
+
+- view.py
+    - from django.contrib.auth.forms import UserCreationForm
+
+
+## python manage.py shell
+    - from django.contrib.auth.models import User
+    - User.objects.all()
+    - User.objects.get(id=1)
+    - User.objects.get(username='alex')
+    - exit()
