@@ -1,7 +1,24 @@
 from email import message
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+
+def user_login(request):
+    message='登入'
+    # 是否是POST表單
+    if request.method=='POST':
+        print('POST')
+        if request.POST.get('login'):
+            # 1.檢查帳號密碼是否為空
+            # 2.是否有該使用者
+            # 3.匹配密碼進行登入
+
+            print('login')
+        elif request.POST.get('register'):
+            return redirect('register')
+        
+    
+    return render(request, './user/login.html', {'message':message})
 
 # Create your views here.
 def user_register(request):
