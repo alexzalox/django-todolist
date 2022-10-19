@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate,login,logout
 
 def user_logout(request):
     logout(request)
-    return redirect('profile')
+    return redirect('todo')
 
 def profile(request):
     return render(request, './user/profile.html')
