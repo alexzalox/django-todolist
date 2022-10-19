@@ -61,7 +61,11 @@ def user_register(request):
         username = request.POST.get('username')
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
-
+        # 註冊功能
+        # 密碼不能少於8個字元
+        # 兩次密碼是否相同
+        # 使用者名稱不能重複
+        # 進行註冊
         if len(password1) <8:
             message='密碼少於8個字元'
         elif password1 != password2:
@@ -74,16 +78,13 @@ def user_register(request):
                 user.save()
                 message='註冊成功!'
                 login(request,user)
+                
                 return redirect('profile')
 
 
 
 
-        # 註冊功能
-        # 密碼不能少於8個字元
-        # 兩次密碼是否相同
-        # 使用者名稱不能重複
-        # 進行註冊
+
 
 
 
