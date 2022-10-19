@@ -13,3 +13,7 @@ class Todo(models.Model):
 
 
     user=models.ForeignKey(User,on_delete=models.CASCADE)
+
+    # 如果是on_delete = models.SET_NULL, null = True ，後面用username會報錯
+    def __str__(self):
+        return f'{self.id}-{self.title}({self.user.username})'
