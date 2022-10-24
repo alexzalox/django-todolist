@@ -1,10 +1,17 @@
-from email import message
 from django.shortcuts import redirect, render
 from django.shortcuts import get_object_or_404
 from .models import Todo
 from .forms import TodoForm
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
+@login_required
+def completed(request):
+    todos=Todo.objects.filter(user=request.user, completed=True)
+    return render(request, './todo/completed.html', {'todos':todos})
+
+
+@login_required
 def createtodo(request):
     message=''
     form=TodoForm()
@@ -37,6 +44,7 @@ def todo(request):
 
     return render(request,'./todo/todo.html',{'todos':todos})
 
+@login_required
 def viewtodo(request,id):
     try:
         todo = Todo.objects.get(id=id)
