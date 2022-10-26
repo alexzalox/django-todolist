@@ -1,0 +1,17 @@
+header {
+    background-color: purple;
+    color: white;
+    padding: 12px;
+}
+
+header>a {
+    color: white;
+}
+
+header>a:visited {
+    margin-left: 6px;
+}
+
+body {
+    background-color: antiquewhite;
+}
